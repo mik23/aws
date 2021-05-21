@@ -10,8 +10,7 @@ user_password = 'masterpassword'
 rds_endpoint = ''
 
 rds_client = boto3.client('rds')
-response = rds_client.describe_db_instances(
-    DBInstanceIdentifier=rds_id)
+response = rds_client.describe_db_instances(DBInstanceIdentifier=rds_id)
 
-rds_endpoint = json.dumps(response, response['DBInstance'][0]['Endpoint']['Address'])
+rds_endpoint = json.dumps(response['DBInstances'][0]['Endpoint']['Address'])
 print(rds_endpoint)
